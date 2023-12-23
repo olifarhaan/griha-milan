@@ -1,14 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 const Header = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
     const checkPath = (path) => {
-        console.log(location.pathname, path);
-        if (path === location.pathname) return true;
-        else return false;
+        return location.pathname === path;
     }
 
     return (
@@ -19,16 +16,14 @@ const Header = () => {
                 </div>
                 <div>
                     <ul className="flex gap-5">
-                        <li className={`py-6 text-sm border-b-[3px] text-gray-500 font-semibold border-b-transparent ${checkPath("/") && "text-black border-b-red-500"}  cursor-pointer`} onClick={() => navigate('/')}>Home</li>
-                        <li className={`py-6 text-sm border-b-[3px] text-gray-500 font-semibold border-b-transparent ${checkPath("/offers") && "text-black border-b-red-500"}  cursor-pointer`} onClick={() => navigate('/offers')}>Offers</li>
-                        <li className={`py-6 text-sm border-b-[3px] text-gray-500 font-semibold border-b-transparent ${checkPath("/sign-in") && "text-black border-b-red-500"} cursor-pointer`} onClick={() => navigate('/sign-in')}>Sign In</li>
+                        <li className={`py-6 text-sm font-semibold cursor-pointer ${checkPath("/") ? "bg-red-600 text-black" : "text-gray-500 hover:bg-gray-100"} `} onClick={() => navigate('/')}>Home</li>
+                        <li className={`py-6 text-sm font-semibold cursor-pointer ${checkPath("/offers") ? "bg-red-600 text-black" : "text-gray-500 hover:bg-gray-100"} `} onClick={() => navigate('/offers')}>Offers</li>
+                        <li className={`py-6 text-sm font-semibold cursor-pointer ${checkPath("/sign-in") ? "bg-red-600 text-black" : "text-gray-500 hover:bg-gray-100"} `} onClick={() => navigate('/sign-in')}>Sign In</li>
                     </ul>
-
                 </div>
-
             </header>
         </div>
     )
 }
 
-export default Header
+export default Header;
