@@ -46,8 +46,8 @@ const SignUp = () => {
             navigate("/");
         }
         catch (error) {
-            console.log(error)
-            if (error.code === "auth/email-already-exists") toast.error("Email already registered");
+            console.log(error.code)
+            if (error.code === "auth/email-already-in-use") toast.error("Email already registered");
             else if (error.code === "auth/invalid-email") toast.error("Invalid email! Enter a valid email");
             else if (error.code === 'auth/user-disabled') toast.error("This email is disabled");
             else if (error.code === 'auth/network-request-failed') toast.error("Check your internet connection");
@@ -77,7 +77,7 @@ const SignUp = () => {
                             <div className="text-primary cursor-pointer hover:underline" onClick={() => navigate('/forgot-password')}> Forgot Password? </div>
                         </div>
                         <div>
-                            <button type="submit" className={`w-full bg-primary hover:bg-primaryHover text-white rounded-md py-3 uppercase transition duration-200 ease-in-out active:bg-primaryHover hover:shadow-lg active:shadow-lg disabled:${loading}`}>{loading ? "Signing Up ..." : "Sign Up"}</button>
+                            <button type="submit" className={`w-full bg-primary hover:bg-primaryHover text-white rounded-md py-3 uppercase transition duration-200 ease-in-out active:bg-primaryHover hover:shadow-lg active:shadow-lg disabled:${loading} ${loading ? "opacity-50" : 'opacity-100'}`}>{loading ? "Signing Up ..." : "Sign Up"}</button>
                         </div>
                         <div className="flex items-center before:border-t-[1px] before:flex-1 after:border-t-[1px] after:flex-1">
                             <p className="text-center font-semibold mx-2">OR</p>

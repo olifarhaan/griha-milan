@@ -111,10 +111,6 @@ const EditListing = () => {
                 const storageRef = ref(storage, filename);
                 const uploadTask = uploadBytesResumable(storageRef, image);
                 uploadTask.on('state_changed',
-                    (snapshot) => {
-                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        // console.log('Upload is ' + progress + '% done');
-                    },
                     (error) => {
                         reject(error);
                     },

@@ -10,7 +10,7 @@ import login from '../assets/jpg/login.jpg'
 
 
 const SignIn = () => {
-  const [loading, setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const [formData, setFormData] = useState({
@@ -75,7 +75,7 @@ const SignIn = () => {
               <div className="text-primary cursor-pointer hover:underline" onClick={() => navigate('/forgot-password')}> Forgot Password? </div>
             </div>
             <div>
-              <button type="submit" className={`w-full bg-primary hover:bg-primaryHover text-white rounded-md py-3 uppercase transition duration-200 ease-in-out active:bg-primaryHover hover:shadow-lg active:shadow-lg disabled:${loading}`}>{loading? "Signing In ..." : "Sign In"}</button>
+              <button type="submit" className={`w-full bg-primary hover:bg-primaryHover text-white rounded-md py-3 uppercase transition duration-200 ease-in-out active:bg-primaryHover hover:shadow-lg active:shadow-lg ${loading ? "opacity-50" : 'opacity-100'} disabled:${loading}`}>{loading ? "Signing In ..." : "Sign In"}</button>
             </div>
             <div className="flex items-center before:border-t-[1px] before:flex-1 after:border-t-[1px] after:flex-1">
               <p className="text-center font-semibold mx-2">OR</p>
