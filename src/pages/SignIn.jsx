@@ -38,7 +38,6 @@ const SignIn = () => {
     } catch (error) {
       const code = error.code.toString();
       if (code === 'auth/user-not-found') toast.error("User not found");
-      // if (code === 'auth/account-exists-with-different-credential') toast.error("Differrent credentials");
       else if (code === 'auth/wrong-password') {
         await fetchSignInMethodsForEmail(auth, email).then(function (result) {
           if (result) {

@@ -47,7 +47,8 @@ const SignUp = () => {
         }
         catch (error) {
             console.log(error)
-            if (error.code === "auth/invalid-email") toast.error("Invalid email! Enter a valid email");
+            if (error.code === "auth/email-already-exists") toast.error("Email already registered");
+            else if (error.code === "auth/invalid-email") toast.error("Invalid email! Enter a valid email");
             else if (error.code === 'auth/user-disabled') toast.error("This email is disabled");
             else if (error.code === 'auth/network-request-failed') toast.error("Check your internet connection");
             else if (error.code === 'auth/too-many-requests') toast.error("Try logging after some time");

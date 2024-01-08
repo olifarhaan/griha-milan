@@ -83,7 +83,7 @@ const CreateListing = () => {
                     uploadTask.on('state_changed',
                         (snapshot) => {
                             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                            console.log('Upload is ' + progress + '% done');
+                            // console.log('Upload is ' + progress + '% done');
                         },
                         (error) => {
                             reject(error);
@@ -125,12 +125,6 @@ const CreateListing = () => {
             else if (error.code === 'auth/too-many-requests') toast.error("Try logging after some time");
             else toast.error("Something went wrong");
         }
-
-
-
-
-
-
 
     }
 
