@@ -2,8 +2,8 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/svg/logo.svg"
-import { MdMenuOpen } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import Button from "./Button";
 
 
@@ -193,7 +193,7 @@ const Header = () => {
                                     }
                                     }>
                                     {
-                                        showMobileMainDropdown ? <IoMdClose className="text-3xl" /> : <MdMenuOpen className="text-3xl" />
+                                        showMobileMainDropdown ? <IoMdClose className="text-3xl" /> : <HiOutlineMenuAlt2 className="text-3xl" />
                                     }
                                 </button>
                             </div>

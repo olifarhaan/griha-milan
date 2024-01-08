@@ -74,8 +74,8 @@ const Offers = () => {
       {
         listings ? <section className="max-w-6xl px-3 my-20 mx-auto">
           <h2 className="text-3xl text-center bmt-6 font-bold text-heading">Recent Offers</h2>
-          <p className="cursor-pointer text-center text-primary hover:text-primaryHover hover:underline">Here are some of the offers</p>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 my-5 gap-3">
+          <p className="text-center text-primary">Here are some of the offers</p>
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  my-5 gap-3">
             {listings.map((listing) => {
               return <ListingCard key={listing.id} id={listing.id} listing={listing.data} />
             })}
@@ -89,7 +89,7 @@ const Offers = () => {
               </div>
               : <p className="text-center">No More Listings</p>
           }
-        </section> : <section className="flex items-center justify-center">
+        </section> : <section className="flex items-center my-20 justify-center">
           <h1 className="text-heading text-3xl font-bold">No Offer Listing Found</h1>
         </section>
       }

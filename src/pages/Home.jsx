@@ -96,7 +96,7 @@ const Home = () => {
         offerListings && offerListings.length > 0 && <section className="max-w-6xl px-3 mt-20 mx-auto">
           <h2 className="text-3xl mt-6 font-bold text-heading">Recent Offers</h2>
           <p className="cursor-pointer inline text-primary hover:text-primaryHover hover:underline" onClick={() => navigate("/offers")}>Show more offers</p>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 my-5 gap-3">
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-5 gap-3">
             {offerListings.map((listing) => {
               return <ListingCard key={listing.id} id={listing.id} listing={listing.data} />
             })}
@@ -107,7 +107,7 @@ const Home = () => {
         rentListings && rentListings.length > 0 && <section className="max-w-6xl px-3 mt-20 mx-auto">
           <h2 className="text-3xl mt-6 font-bold text-heading">Available for Sale</h2>
           <p className="cursor-pointer inline text-primary hover:text-primaryHover hover:underline" onClick={() => navigate("/category/rent")}>Show more offers</p>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 my-5 gap-3">
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-5 gap-3">
             {rentListings.map((listing) => {
               return <ListingCard key={listing.id} id={listing.id} listing={listing.data} />
             })}
@@ -119,7 +119,7 @@ const Home = () => {
         saleListings && saleListings.length > 0 && <section className="max-w-6xl px-3 my-20 mx-auto">
           <h2 className="text-3xl mt-6 font-bold text-heading">Available for Rent</h2>
           <p className="cursor-pointer inline text-primary hover:text-primaryHover hover:underline" onClick={() => navigate("/category/offers")}>Show more offers</p>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 my-5 gap-3">
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-5 gap-3">
             {saleListings.map((listing) => {
               return <ListingCard key={listing.id} id={listing.id} listing={listing.data} />
             })}

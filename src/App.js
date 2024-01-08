@@ -20,10 +20,20 @@ import { Offline, Online } from "react-detect-offline";
 import NoInternet from "./pages/NoInternet";
 import About from "./pages/About";
 import ContactForm from "./pages/ContactForm";
+import { useEffect } from "react";
 
 
 
 function App() {
+  useEffect(() => {
+    const handleContextmenu = e => {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextmenu)
+    return function cleanup() {
+      document.removeEventListener('contextmenu', handleContextmenu)
+    }
+  }, [])
   return (
     <div className="min-h-screen flex flex-col">
       <Router>

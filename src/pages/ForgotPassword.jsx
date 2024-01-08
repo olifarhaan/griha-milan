@@ -50,7 +50,7 @@ const ForgotPassword = () => {
 
             <div className="flex flex-wrap justify-between text-sm sm:text-lg">
               <div> Don't have an account? <span className="text-primary cursor-pointer hover:underline" onClick={() => navigate('/sign-up')}>Register</span></div>
-              <div className="text-blue-600 cursor-pointer hover:underline" onClick={() => navigate('/sign-in')}> Sign in instead </div>
+              <div className="text-primary hover:text-primaryHover cursor-pointer hover:underline" onClick={() => navigate('/sign-in')}> Sign in instead </div>
             </div>
             <div>
               <button type="submit" className="w-full bg-primary hover:bg-primaryHover text-white rounded-md py-3 uppercase transition duration-200 ease-in-out active:bg-primaryHover hover:shadow-lg active:shadow-lg"> Send reset email</button>

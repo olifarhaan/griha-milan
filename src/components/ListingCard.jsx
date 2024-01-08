@@ -31,7 +31,7 @@ const ListingCard = ({ id, listing, onEdit, onDelete }) => {
                 <div className="w-full p-[10px] flex flex-col gap-2">
                     <div className="flex items-center gap-1">
                         <MdLocationOn className="h-4 w-4 text-green-600" />
-                        <p className="font-semibold text-sm mb-[2px] text-paragraph truncate">
+                        <p className="font-semibold text-sm text-paragraph truncate">
                             {listing.address}
                         </p>
                     </div>

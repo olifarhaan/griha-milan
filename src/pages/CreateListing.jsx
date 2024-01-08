@@ -97,7 +97,7 @@ const CreateListing = () => {
 
                 })
             }
-console.log("insude try")
+            console.log("insude try")
             const imgUrls = await Promise.all(
                 [...images].map((image) => storeImage(image)))
                 .catch((error) => {
@@ -223,7 +223,7 @@ console.log("insude try")
                             <input className="w-full rounded-md text-lg text-paragraph bg-white border-gray-300 transition ease-in-out" type="number" step="any" id="longitude" value={longitude} onChange={onChange} required min="-180" max="180" />
                         </div>
                     </div>
-                    <p className="mt-2 text-xs">Get your property's lattitude & longitude from <a href="http://google.com" className="text-primary underline hover:text-primaryHover" target='_blank' rel="noopener noreferrer"> here</a></p>
+                    <p className="mt-2 text-xs">Get your property's lattitude & longitude from <a href="https://www.latlong.net" className="text-primary underline hover:text-primaryHover" target='_blank' rel="noopener noreferrer"> here</a></p>
                 </div>
 
                 <div>

@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1ad16fec.css",
+    "main.js": "/static/js/main.d05b56f9.js",
+    "static/media/forgotPassword.jpg": "/static/media/forgotPassword.462dc3b7d17ca7bea144.jpg",
+    "static/media/signUp.jpg": "/static/media/signUp.a259eab728cb7d6b2386.jpg",
+    "static/media/login.jpg": "/static/media/login.0c101a048fd1cc7dfdf3.jpg",
+    "static/media/contact.jpg": "/static/media/contact.ba9ec97b754f6e8a1802.jpg",
+    "static/media/NotFound.png": "/static/media/NotFound.21e3d6d69eac45cffe5a.png",
+    "static/media/logo.svg": "/static/media/logo.77e027c4a4915ef95e553014e7a8c117.svg",
+    "static/media/bathroom.svg": "/static/media/bathroom.0d438ba0bbfbfb8dbf9ca4ad8d0df607.svg",
+    "static/media/sell.svg": "/static/media/sell.d3c3cfb9cb5a4ef9657413712687813e.svg",
+    "static/media/bedroom.svg": "/static/media/bedroom.0bbda412df4326c564de06b881f42679.svg",
+    "static/media/parking.svg": "/static/media/parking.e369629fe33073c27f073d207ad84b1c.svg",
+    "static/media/appraisals.svg": "/static/media/appraisals.77efd204f8e17d6fe706ab35c03b2658.svg",
+    "static/media/rent.svg": "/static/media/rent.8bb82e204897c4d62d1b35a823733c5b.svg",
+    "static/media/buy.svg": "/static/media/buy.63e1cd0eace0f1626eb7bd121943f373.svg",
+    "static/media/spinner.svg": "/static/media/spinner.d9f9fbfd805263c37c44fb42d85ec426.svg",
+    "index.html": "/index.html",
+    "static/media/area.svg": "/static/media/area.0929b3cd5b8cb267121d63b3fad828f8.svg",
+    "main.1ad16fec.css.map": "/static/css/main.1ad16fec.css.map",
+    "main.d05b56f9.js.map": "/static/js/main.d05b56f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ad16fec.css",
+    "static/js/main.d05b56f9.js"
+  ]
+}

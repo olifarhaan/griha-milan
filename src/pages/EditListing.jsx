@@ -259,7 +259,7 @@ const EditListing = () => {
                             <input className="w-full rounded-md text-lg text-paragraph bg-white border-gray-300 transition ease-in-out" type="number" step="any" id="longitude" value={longitude} onChange={onChange} required min="-180" max="180" />
                         </div>
                     </div>
-                    <p className="mt-2 text-xs">Get your property's lattitude & longitude from <a href="http://google.com" className="text-red-700 underline hover:text-red-900" target='_blank' rel="noopener noreferrer"> here</a></p>
+                    <p className="mt-2 text-xs">Get your property's lattitude & longitude from <a href="https://www.latlong.net" className="text-red-700 underline hover:text-red-900" target='_blank' rel="noopener noreferrer"> here</a></p>
                 </div>
 
                 <div>
