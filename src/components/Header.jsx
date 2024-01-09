@@ -193,7 +193,7 @@ const Header = () => {
                                     }
                                     }>
                                     {
-                                        showMobileMainDropdown ? <IoMdClose className="text-3xl" /> : <HiOutlineMenuAlt2 className="text-3xl" />
+                                        showMobileMainDropdown ? <IoMdClose className="text-3xl text-primary" /> : <HiOutlineMenuAlt2 className="text-3xl text-primary" />
                                     }
                                 </button>
                             </div>

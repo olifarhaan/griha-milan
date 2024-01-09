@@ -104,52 +104,62 @@ const EditListing = () => {
             lat: lattitude,
             lng: longitude
         }
-        const storeImage = async (image) => {
-            return new Promise((resolve, reject) => {
-                const storage = getStorage();
-                const filename = `${auth.currentUser.uid}-${auth.currentUser.displayName}-${uuidv4()}`;
-                const storageRef = ref(storage, filename);
-                const uploadTask = uploadBytesResumable(storageRef, image);
-                uploadTask.on('state_changed',
-                    (error) => {
-                        reject(error);
-                    },
-                    () => {
-                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                            resolve(downloadURL);
-                        });
+
+        try {
+            const storeImage = async (image) => {
+                return new Promise((resolve, reject) => {
+                    const storage = getStorage();
+                    const filename = `${auth.currentUser.uid}-${auth.currentUser.displayName}-${uuidv4()}`;
+                    const storageRef = ref(storage, filename);
+                    const uploadTask = uploadBytesResumable(storageRef, image);
+                    uploadTask.on('state_changed',
+                        (snapshot) => {
+
+                        },
+                        (error) => {
+                            reject(error);
+                        },
+                        () => {
+                            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                                resolve(downloadURL);
+                            });
+                        }
+                    );
+
+                })
+            }
+
+
+            const imgUrls = await Promise.all(
+                [...images].map((image) => {
+                    if (image.size > 5 * 1024 * 1024) {
+                        throw new Error('ImgSizeExceeded');
                     }
-                );
-
-            })
-        }
-
-
-        const imgUrls = await Promise.all(
-            [...images].map((image) => storeImage(image)))
-            .catch((error) => {
+                    return storeImage(image)
+                })
+            ).catch((error) => {
                 setLoading(false);
                 toast.error("Could not upload images")
                 return
             })
 
-        console.log(imgUrls)
-        const formDataCopy = { ...formData, imgUrls, geoLocation, userId: auth.currentUser.uid, timestamp: serverTimestamp() }
-        delete formDataCopy.lattitude;
-        delete formDataCopy.longitude;
-        delete formDataCopy.images;
-        !formDataCopy.offer && delete formDataCopy.discountedPrice;
-        console.log(formDataCopy)
+            const formDataCopy = { ...formData, imgUrls, geoLocation, userId: auth.currentUser.uid, timestamp: serverTimestamp() }
+            delete formDataCopy.lattitude;
+            delete formDataCopy.longitude;
+            delete formDataCopy.images;
+            !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
-        // const docRef = await setDoc(collection(db, "listings"), formDataCopy);
-        const docRef = doc(db, "listings", params.id);
-        await updateDoc(docRef, formDataCopy)
-        setLoading(false)
-        toast.success("Congratulation! Listing updated");
-        // console.log("After:", docRef)
-        console.log("DocRef id", docRef.id)
-        console.log("Param id", params.id)
-        navigate(`/category/${formDataCopy.type}/${docRef.id}`)
+            const docRef = doc(db, "listings", params.id);
+            await updateDoc(docRef, formDataCopy)
+            setLoading(false)
+            toast.success("Congratulation! Listing updated");
+            navigate(`/category/${formDataCopy.type}/${docRef.id}`)
+        } catch (error) {
+            if (error.message === "ImgSizeExceeded") toast.error("Images size should be less than 2MB")
+            else if (error.code === 'auth/network-request-failed') toast.error("Check your internet connection");
+            else if (error.code === 'auth/too-many-requests') toast.error("Try logging after some time");
+            else toast.error("Something went wrong");
+        }
 
     }
 
@@ -177,7 +187,7 @@ const EditListing = () => {
     return (
         <main className="w-full sm: max-w-md sm: mx-auto px-6">
             <h1 className="text-3xl text-center mt-6 font-bold">Update Listing</h1>
-            <form onSubmit={onSubmit} className="flex flex-col gap-6 my-6" disa>
+            <form onSubmit={onSubmit} className="flex flex-col gap-6 my-6">
                 <div>
                     <p className="text-lg font-semibold">Sell/Rent</p>
                     <div className="flex gap-8 ">

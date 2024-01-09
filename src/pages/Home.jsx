@@ -30,7 +30,7 @@ const Home = () => {
           setOfferListings(listings)
           // setLoading(false);
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
       }
@@ -53,9 +53,8 @@ const Home = () => {
           })
           setRentListings(listings)
           // setLoading(false);
-          console.log(listings)
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
       }
     )()
@@ -78,7 +77,7 @@ const Home = () => {
           })
           setSaleListings(listings)
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     )()

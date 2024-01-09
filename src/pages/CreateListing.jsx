@@ -71,7 +71,6 @@ const CreateListing = () => {
             lat: lattitude,
             lng: longitude
         }
-        console.log("before try")
 
         try {
             const storeImage = async (image) => {
@@ -81,6 +80,9 @@ const CreateListing = () => {
                     const storageRef = ref(storage, filename);
                     const uploadTask = uploadBytesResumable(storageRef, image);
                     uploadTask.on('state_changed',
+                        (snapshot) => {
+
+                        },
                         (error) => {
                             reject(error);
                         },
@@ -93,14 +95,18 @@ const CreateListing = () => {
 
                 })
             }
-            console.log("insude try")
             const imgUrls = await Promise.all(
-                [...images].map((image) => storeImage(image)))
-                .catch((error) => {
-                    setLoading(false);
-                    toast.error("Could not upload images")
-                    return
+                [...images].map((image) => {
+                    if (image.size > 5 * 1024 * 1024) {
+                        throw new Error('ImgSizeExceeded');
+                    }
+                    return storeImage(image)
                 })
+            ).catch((error) => {
+                setLoading(false);
+                toast.error("Could not upload images")
+                return
+            })
             console.log(imgUrls)
             const formDataCopy = { ...formData, imgUrls, geoLocation, userId: auth.currentUser.uid, timestamp: serverTimestamp() }
             delete formDataCopy.lattitude;
@@ -112,15 +118,16 @@ const CreateListing = () => {
             // In SignUp page during authentication we have got the uid thats why
             // we used setDoc there
             const docRef = await addDoc(collection(db, "listings"), formDataCopy);
-            setLoading(false)
             toast.success("Congratulation! Listing created");
             navigate(`/category/${formDataCopy.type}/${docRef.id}`)
 
         } catch (error) {
-            if (error.code === 'auth/network-request-failed') toast.error("Check your internet connection");
+            if (error.message === "ImgSizeExceeded") toast.error("Images size should be less than 2MB")
+            else if (error.code === 'auth/network-request-failed') toast.error("Check your internet connection");
             else if (error.code === 'auth/too-many-requests') toast.error("Try logging after some time");
             else toast.error("Something went wrong");
         }
+        setLoading(false);
 
     }
 
